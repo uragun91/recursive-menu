@@ -1,0 +1,54 @@
+$common-gap: 12px;
+$buttons-height: 48px;
+
+.menu-home {
+  box-sizing: border-box;
+  height: calc(100vh - 56px);
+  border-top: 1px solid #c3cee0;
+  padding: 12px 0 0 0;
+}
+
+.controls-wrapper {
+  display: flex;
+
+  & *:last-child {
+    margin-left: 12px;
+  }
+
+  .add-section, .add-item {
+    flex: 1;
+    text-align: left;
+    height: 48px;
+  }
+}
+
+.menu {
+  position: relative;
+  min-height: calc(100vh - #{$common-gap} - #{$buttons-height} - 57px)
+}
+
+.empty-menu {
+  width: 216px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+
+  &__icon {
+    width: 128px;
+    height: 128px;
+  }
+
+  &__message {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 18px;
+    color: #646d7c;
+  }
+}
