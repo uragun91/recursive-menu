@@ -13,7 +13,7 @@ export class MenuTreeComponent implements OnChanges {
 
   @Input() public menu: MenuNode[]
 
-  public treeControl = new NestedTreeControl<MenuNode>((node: MenuNode) => node.sections)
+  public treeControl = new NestedTreeControl<MenuNode>((node: MenuNode) => node.children)
   public dataSource = new MatTreeNestedDataSource<MenuNode>()
 
   public ngOnChanges(simpleChanges: SimpleChanges) {
@@ -23,7 +23,7 @@ export class MenuTreeComponent implements OnChanges {
   }
 
   public hasChild(index: number, node: MenuNode): boolean {
-    return !!(node.sections || node.sections.length)
+    return !!node.children && !!node.children.length
   }
 
 }

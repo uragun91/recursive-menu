@@ -1,17 +1,24 @@
-import { Product } from './product.model'
+import { MenuNodeTypes } from '../enums/menu-node-types.enum'
 
 export class MenuNode {
   constructor(
     public name: string = '',
-    public sections: MenuNode[] = [],
-    public items: Product[] = []
-  ) { }
+    public sale: number = 0,
+    public type: MenuNodeTypes = MenuNodeTypes.SECTION,
+    public children: MenuNode[] = [],
+    ) { }
 
   public static build(data: any = {}): MenuNode {
+    let nodeType = MenuNodeTypes.SECTION
+    if (Object.values(MenuNodeTypes).includes(data.nodeType)) {
+      nodeType = data.nodeType
+    }
+
     return new MenuNode(
       data.name || '',
-      Array.isArray(data.sections) ? data.sections.map(MenuNode.build) : [],
-      Array.isArray(data.items) ? data.items.map(Product.build) : []
+      data.sale || 0,
+      nodeType,
+      Array.isArray(data.children) ? data.children.map(MenuNode.build) : [],
     )
   }
 }
