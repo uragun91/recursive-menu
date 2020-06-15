@@ -2,9 +2,23 @@
   <!-- This is the tree node template for leaf nodes -->
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
     <li>
-      <div class="mat-tree-node">
-        <button mat-icon-button disabled></button>
-        {{ node.name }}
+      <div class="menu-tree__node">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Меню продукта">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Редактировать</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            <span>Удалить</span>
+          </button>
+        </mat-menu>
+        <span>
+          {{ node.name }}
+        </span>
       </div>
       <pre>{{ node.items | json }}</pre>
 
