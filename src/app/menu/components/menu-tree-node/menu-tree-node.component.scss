@@ -13,5 +13,13 @@
     height: 48px;
     background: red;
   }
+
+  &__title {
+    font-size: 15px;
+
+    &--section {
+      font-weight: 500;
+    }
+  }
 }
 
