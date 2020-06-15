@@ -11,7 +11,7 @@
   </div>
 
   <div class="menu">
-    <div class="empty-menu">
+    <div class="empty-menu" *ngIf="!menu || !menu.length">
       <svg class="empty-menu__icon">
         <use xlink:href="#icon-empty-menu"/>
       </svg>
@@ -19,5 +19,7 @@
         Добавьте в новое меню разделы и позиции
       </div>
     </div>
+
+    <app-menu-tree *ngIf="menu" [menu]="menu"></app-menu-tree>
   </div>
 </div>

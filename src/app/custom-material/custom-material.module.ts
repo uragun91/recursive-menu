@@ -7,8 +7,8 @@ import {
   MatSnackBarModule, MatMenuModule, MatSidenavModule,
   MatProgressSpinnerModule, MatDatepickerModule, MatTableModule,
   MatAutocompleteModule, MatDialogModule, MatTabsModule, MatTooltipModule,
-  MatSelectModule, MatPaginatorModule, MatChipsModule, MatButtonToggleModule,
-  MatSlideToggleModule, MatBadgeModule, MatCheckboxModule, MatExpansionModule, MatSortModule
+  MatSelectModule, MatChipsModule, MatButtonToggleModule,
+  MatSlideToggleModule, MatBadgeModule, MatCheckboxModule, MatExpansionModule, MatSortModule, MatTreeModule
 } from '@angular/material';
 import { SelectCheckAllComponent } from './select-check-all/select-check-all.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -29,23 +29,23 @@ export const MY_FORMATS = {
   imports: [
     CommonModule,
     MatMomentDateModule,
-    MatSidenavModule, MatIconModule, MatToolbarModule, MatButtonModule,
-    MatListModule, MatCardModule, MatProgressBarModule, MatInputModule,
-    MatSnackBarModule, MatProgressSpinnerModule, MatDatepickerModule,
-    MatAutocompleteModule, MatTableModule, MatDialogModule, MatTabsModule,
-    MatTooltipModule, MatSelectModule, MatPaginatorModule, MatChipsModule,
+    MatIconModule, MatButtonModule,
+    MatCardModule, MatProgressBarModule,
+    MatSnackBarModule, MatProgressSpinnerModule,
+    MatDialogModule,
+    MatSelectModule, MatChipsModule,
     MatButtonToggleModule, MatSlideToggleModule, MatBadgeModule, MatCheckboxModule,
-    MatExpansionModule, DragDropModule, MatSortModule
+    MatExpansionModule, DragDropModule, MatTreeModule
   ],
   exports: [
     CommonModule,
-    MatSidenavModule, MatIconModule, MatToolbarModule, MatButtonModule,
-    MatListModule, MatCardModule, MatProgressBarModule, MatInputModule,
-    MatSnackBarModule, MatMenuModule, MatProgressSpinnerModule, MatDatepickerModule,
+    MatIconModule, MatButtonModule,
+    MatCardModule, MatProgressBarModule,
+    MatSnackBarModule, MatMenuModule, MatProgressSpinnerModule,
     MatAutocompleteModule, MatTableModule, MatDialogModule, MatTabsModule,
-    MatTooltipModule, MatSelectModule, MatPaginatorModule, MatChipsModule,
+    MatSelectModule, MatChipsModule,
     MatButtonToggleModule, MatSlideToggleModule, MatBadgeModule, MatCheckboxModule,
-    MatExpansionModule, SelectCheckAllComponent, DragDropModule, MatSortModule
+    MatExpansionModule, SelectCheckAllComponent, DragDropModule, MatTreeModule
   ],
   providers: [
     {

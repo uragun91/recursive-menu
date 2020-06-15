@@ -3,7 +3,7 @@ $buttons-height: 48px;
 
 .menu-home {
   box-sizing: border-box;
-  height: calc(100vh - 56px);
+  min-height: calc(100vh - 56px);
   border-top: 1px solid #c3cee0;
   padding: 12px 0 0 0;
 }
