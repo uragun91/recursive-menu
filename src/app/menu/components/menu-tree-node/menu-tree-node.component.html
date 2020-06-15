@@ -1,0 +1,54 @@
+<div class="menu-tree-node menu-tree-node--product" *ngIf="node.type === NodeTypes.PRODUCT">
+  <span class="menu-tree-node__color"></span>
+  <div class="menu-tree-node__menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Меню продукта">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>edit</mat-icon>
+        <span>Редактировать</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>delete</mat-icon>
+        <span>Удалить</span>
+      </button>
+    </mat-menu>
+  </div>
+  <span class="menu-tree-node__title">
+    {{ node.name }}
+  </span>
+</div>
+
+<div class="menu-tree-node menu-tree-node--section" *ngIf="node.type === NodeTypes.SECTION">
+  <span class="menu-tree-node__color"></span>
+  <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
+    <mat-icon class="mat-icon-rtl-mirror">
+      {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+    </mat-icon>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Меню категории">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>add</mat-icon>
+      <span>Добавить позицию</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>add</mat-icon>
+      <span>Добавить раздел меню</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>Редактировать</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>delete</mat-icon>
+      <span>Удалить</span>
+    </button>
+  </mat-menu>
+  <span class="menu-tree-node__title">
+    {{ node.name }}
+  </span>
+</div>
