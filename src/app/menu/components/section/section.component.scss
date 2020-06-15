@@ -1,0 +1,23 @@
+.section {
+  background: #ffffff;
+  box-sizing: border-box;
+  margin: 0 -12px;
+  padding: 12px;
+  border-radius: 6px;
+  position: relative;
+  min-height: calc(100vh - 56px);
+}
+
+.save-button {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  height: 48px;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

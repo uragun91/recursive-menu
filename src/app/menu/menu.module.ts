@@ -12,13 +12,15 @@ import { MenuService } from './services/menu.service'
 // components
 import { MenuHomeComponent } from './components/menu-home/menu-home.component'
 import { MenuTreeComponent } from './components/menu-tree/menu-tree.component'
-import { MenuTreeNodeComponent } from './components/menu-tree-node/menu-tree-node.component'
+import { MenuTreeNodeComponent } from './components/menu-tree-node/menu-tree-node.component';
+import { SectionComponent } from './components/section/section.component'
 
 @NgModule({
   declarations: [
     MenuHomeComponent,
     MenuTreeComponent,
-    MenuTreeNodeComponent
+    MenuTreeNodeComponent,
+    SectionComponent
   ],
   imports: [
     CommonModule,

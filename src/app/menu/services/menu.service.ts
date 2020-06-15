@@ -47,6 +47,31 @@ export class MenuService {
       )
   }
 
+  public getSections(): Observable<string[]> {
+    return this.getMenu()
+      .pipe(
+        map((menuNodes: MenuNode[]) => {
+
+          const getNodesNames = (nodes: MenuNode[], parentRoute?: string): string[] => {
+            return nodes.reduce((acc: string[], node: MenuNode) => {
+              if (node.type === MenuNodeTypes.SECTION) {
+                const route = parentRoute ? `${parentRoute} - ${node.name}` : node.name
+                acc.push(route)
+                if (node.children && node.children.length) {
+                  acc = acc.concat(getNodesNames(node.children, route))
+                }
+              }
+
+              return acc;
+            }, [])
+          }
+          const result: string[] = getNodesNames(menuNodes)
+          result.unshift('Основной')
+          return result
+        })
+      )
+  }
+
   private toMenuTree(menuTreeDef: IMenu[]) {
     return menuTreeDef.map((menuNodeDef: IMenu) => this.toMenuNode(menuNodeDef))
   }
