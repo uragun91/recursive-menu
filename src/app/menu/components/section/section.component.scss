@@ -11,9 +11,11 @@
 .save-button {
   position: absolute;
   bottom: 12px;
-  left: 0;
+  left: 12px;
   right: 0;
   height: 48px;
+  width: calc(480px - 24px);
+  border-radius: 6px;
 }
 
 .title-row {
