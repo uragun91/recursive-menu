@@ -41,7 +41,7 @@ export class SectionFormComponent implements OnInit, OnDestroy {
       .pipe(
         takeUntil(this.unsubscribe),
         tap((section: string) => {
-          this.sectionNode.path = `${section} ${separator} ${this.sectionNode.name}`
+          this.sectionNode.path = `${section}${separator}${this.sectionNode.name}`
         })
       ).subscribe()
 

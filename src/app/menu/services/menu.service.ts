@@ -86,7 +86,13 @@ export class MenuService {
   public addSection(sectionNode: MenuNode) {
     const parentPath = sectionNode.path.split(separator).slice(0, -1).join(separator)
     const parentNode = this.getMenuNodeRefByPath(parentPath, this.menu)
-    parentNode.children.push(sectionNode)
+    if (parentNode) {
+      parentNode.children.push(sectionNode)
+    } else {
+      console.warn('Раздел будет добавлен в корневую секцию!')
+      this.menu.push(sectionNode)
+    }
+
     console.log(this.menu)
   }
 
@@ -116,7 +122,7 @@ export class MenuService {
   }
 
   private toMenuNode(menuNodeDef: IMenu, parentPath: string = ''): MenuNode {
-    const currentNodePath = parentPath ? `${parentPath} ${separator} ${menuNodeDef.name}` : menuNodeDef.name
+    const currentNodePath = parentPath ? `${parentPath}${separator}${menuNodeDef.name}` : menuNodeDef.name
 
     const children = [
       ...menuNodeDef.sections.map((section: IMenu) => this.toMenuNode(section, currentNodePath)),
@@ -126,7 +132,7 @@ export class MenuService {
           product.sale,
           MenuNodeTypes.PRODUCT,
           [],
-          `${currentNodePath} ${separator} ${product.name}`
+          `${currentNodePath}${separator}${product.name}`
         )
       })
     ]

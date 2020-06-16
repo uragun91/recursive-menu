@@ -28,7 +28,7 @@ export class MenuTreeComponent implements OnChanges {
     }
   }
 
-  public hasChild(index: number, node: MenuNode): boolean {
+  public isSection(index: number, node: MenuNode): boolean {
     return node.type === MenuNodeTypes.SECTION
   }
 

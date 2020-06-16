@@ -20,7 +20,7 @@ export class SectionAddComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    const pathArray = this.menuService.parentOfCurrentNode.path.split(separator)
+    const pathArray = this.menuService.parentOfCurrentNode && this.menuService.parentOfCurrentNode.path.split(separator) || []
     pathArray.push(this.sectionNode.name)
     this.sectionNode.path = pathArray.join(separator)
   }
