@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
+
 import { Observable, of } from 'rxjs'
-import { MenuNode } from 'src/app/core/models/menu-node.model'
 import { map, tap } from 'rxjs/operators'
+
+import { MenuNode } from 'src/app/core/models/menu-node.model'
 import { MenuNodeTypes } from 'src/app/core/enums/menu-node-types.enum'
 import * as Separator from '../../core/constants/Separator'
 

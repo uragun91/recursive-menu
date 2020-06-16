@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core'
+import { Component, ChangeDetectionStrategy, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core'
 import { MenuNode } from 'src/app/core/models/menu-node.model'
 import { NestedTreeControl } from '@angular/cdk/tree'
 import { MatTreeNestedDataSource } from '@angular/material'

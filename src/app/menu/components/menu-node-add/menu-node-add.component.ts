@@ -1,13 +1,14 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
 
+import { Subject } from 'rxjs'
+import { takeUntil } from 'rxjs/operators'
+
 import { MenuService } from 'src/app/menu/services/menu.service'
 import { MenuNode } from 'src/app/core/models/menu-node.model'
 import { MenuNodeTypes } from 'src/app/core/enums/menu-node-types.enum'
 
 import * as Separator from '../../../core/constants/Separator'
-import { Subject } from 'rxjs'
-import { takeUntil } from 'rxjs/operators'
 
 const separator = Separator.separator
 
