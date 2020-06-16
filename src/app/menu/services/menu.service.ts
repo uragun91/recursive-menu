@@ -84,16 +84,42 @@ export class MenuService {
   }
 
   public addSection(sectionNode: MenuNode) {
-    const parentPath = sectionNode.path.split(separator).slice(0, -1).join(separator)
-    const parentNode = this.getMenuNodeRefByPath(parentPath, this.menu)
+    const parentNode = this.getParentNodeRef(sectionNode)
     if (parentNode) {
       parentNode.children.push(sectionNode)
     } else {
       console.warn('Раздел будет добавлен в корневую секцию!')
       this.menu.push(sectionNode)
     }
+  }
 
-    console.log(this.menu)
+  public saveSection(sectionNode: MenuNode, prevPath: string): void {
+    const currentParentPath: string = this.getParentPath(sectionNode.path)
+    const prevParentPath: string = this.getParentPath(prevPath)
+
+    const newSectionNode = MenuNode.build(sectionNode)
+    const parentPath = currentParentPath !== prevParentPath ? prevParentPath : currentParentPath
+    const removedNodeIndex = this.removeNode(sectionNode, parentPath)
+
+    const parentNode: MenuNode = this.getParentNodeRef(sectionNode)
+    const childrenHost: MenuNode[] = parentNode && parentNode.children || this.menu
+    childrenHost.splice(removedNodeIndex, 0, newSectionNode)
+  }
+
+  public removeNode(node: MenuNode, parentPath?: string): number {
+    const parentNode: MenuNode = parentPath ? this.getMenuNodeRefByPath(parentPath, this.menu) : this.getParentNodeRef(node)
+    const childrenHost: MenuNode[] = parentNode && parentNode.children || this.menu
+
+    const sectionNodeIndex: number = childrenHost.indexOf(node)
+    if (sectionNodeIndex > -1) {
+      childrenHost.splice(sectionNodeIndex, 1)
+    }
+
+    return sectionNodeIndex
+  }
+
+  public setParentNodeForChild(node: MenuNode): void {
+    this.parentOfCurrentNode = this.getParentNodeRef(node)
   }
 
   private getMenuNodeRefByPath(path: string, menuNodes: MenuNode[]) {
@@ -115,6 +141,15 @@ export class MenuService {
     }
 
     return selectNodeByNestLevel(menuNodes, namePathParts)
+  }
+
+  private getParentNodeRef(node: MenuNode): MenuNode {
+    const parentPath = this.getParentPath(node.path)
+    return this.getMenuNodeRefByPath(parentPath, this.menu)
+  }
+
+  private getParentPath(path: string) {
+    return path.split(separator).slice(0, -1).join(separator)
   }
 
   private toMenuTree(menuTreeDef: IMenu[]) {

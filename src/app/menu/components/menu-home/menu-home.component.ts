@@ -55,6 +55,8 @@ export class MenuHomeComponent implements OnInit {
 
   public gotoEditNodePage(node: MenuNode): void {
     this.menuService.currentNode = node
+    this.menuService.setParentNodeForChild(node)
+
     if (node.type === MenuNodeTypes.PRODUCT) {
       this.router.navigateByUrl('menu/product/edit')
     } else if (node.type === MenuNodeTypes.SECTION) {
