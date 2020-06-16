@@ -1,5 +1,5 @@
-### Nomia Test Task
+## Nomia Test Task
 
-## Clone repo
-## Run `npm ci`
-## Run `npm start`
+#### Clone repo
+#### Run `npm ci`
+#### Run `npm start`
