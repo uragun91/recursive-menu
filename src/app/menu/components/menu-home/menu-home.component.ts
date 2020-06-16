@@ -26,17 +26,6 @@ export class MenuHomeComponent implements OnInit {
     this.getMenu()
   }
 
-  public getMenu(): void {
-    this.menuService.getMenu()
-      .pipe(
-        tap((menuNodes: MenuNode[]) => this.menu = menuNodes),
-        tap(() => {
-          this.cdr.detectChanges()
-        })
-      )
-      .subscribe()
-  }
-
   public gotoAddProductPage(node?: MenuNode): void {
     if (node) {
       this.menuService.parentOfCurrentNode = node
@@ -65,9 +54,18 @@ export class MenuHomeComponent implements OnInit {
   }
 
   public removeNodeFromTree(node: MenuNode): void {
+    this.menuService.removeMenuNode(node)
+    this.getMenu(true)
   }
 
-
-
-
+  private getMenu(updateMenuRef: boolean = false): void {
+    this.menuService.getMenu(updateMenuRef)
+      .pipe(
+        tap((menuNodes: MenuNode[]) => this.menu = menuNodes),
+        tap(() => {
+          this.cdr.detectChanges()
+        })
+      )
+      .subscribe()
+  }
 }

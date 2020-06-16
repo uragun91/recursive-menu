@@ -30,8 +30,8 @@ export class MenuService {
 
   constructor(private http: HttpClient) { }
 
-  public getMenu(): Observable<MenuNode[]> {
-    if (this.menu) {
+  public getMenu(updateRef: boolean = false): Observable<MenuNode[]> {
+    if (this.menu && !updateRef) {
       return of(this.menu)
     }
 
@@ -41,6 +41,7 @@ export class MenuService {
       const menuData: IMenu = JSON.parse(menuDataFromLocalStorage)
       if (menuData) {
         const result = Array.isArray(menuData) ? this.toMenuTree(menuData) : []
+        this.menu = result
         return of(result)
       }
     } catch (err) {
@@ -92,6 +93,8 @@ export class MenuService {
       console.warn('Раздел будет добавлен в корневую секцию!')
       this.menu.push(menuNode)
     }
+
+    this.saveMenuToLocalStorage()
   }
 
   public saveMenuNode(menuNode: MenuNode, prevPath: string): void {
@@ -105,6 +108,8 @@ export class MenuService {
     const parentNode: MenuNode = this.getParentNodeRef(menuNode)
     const childrenHost: MenuNode[] = parentNode && parentNode.children || this.menu
     childrenHost.splice(removedNodeIndex, 0, newSectionNode)
+
+    this.saveMenuToLocalStorage()
   }
 
   public removeMenuNode(node: MenuNode, parentPath?: string): number {
@@ -115,6 +120,8 @@ export class MenuService {
     if (sectionNodeIndex > -1) {
       childrenHost.splice(sectionNodeIndex, 1)
     }
+
+    this.saveMenuToLocalStorage()
 
     return sectionNodeIndex
   }
@@ -180,5 +187,27 @@ export class MenuService {
       children,
       currentNodePath
     )
+  }
+
+  private saveMenuToLocalStorage() {
+    localStorage.setItem(MENU_KEY, JSON.stringify(this.toOriginalMenuDataStructure(this.menu)))
+  }
+
+  private toOriginalMenuDataStructure(menu: MenuNode[]): IMenu[] {
+    return menu.map((menuNode: MenuNode) => {
+      const sections = menuNode.children.filter((node: MenuNode) => node.type === MenuNodeTypes.SECTION)
+      const items = menuNode.children.filter((node: MenuNode) => node.type === MenuNodeTypes.PRODUCT)
+
+      return {
+        name: menuNode.name,
+        sections: this.toOriginalMenuDataStructure(sections),
+        items: items.map((item: MenuNode) => {
+          return {
+            name: item.name,
+            sale: item.sale
+          }
+        })
+      }
+    })
   }
 }
