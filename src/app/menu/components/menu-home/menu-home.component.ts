@@ -39,7 +39,7 @@ export class MenuHomeComponent implements OnInit {
 
   public gotoAddProductPage(node?: MenuNode): void {
     if (node) {
-      this.menuService.currentNode = node
+      this.menuService.parentOfCurrentNode = node
     }
 
     this.router.navigateByUrl('menu/product/add')

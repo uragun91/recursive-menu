@@ -12,10 +12,11 @@ import { MenuService } from './services/menu.service'
 // components
 import { MenuHomeComponent } from './components/menu-home/menu-home.component'
 import { MenuTreeComponent } from './components/menu-tree/menu-tree.component'
-import { MenuTreeNodeComponent } from './components/menu-tree-node/menu-tree-node.component';
-import { SectionFormComponent } from './components/section/section-form/section-form.component';
-import { SectionAddComponent } from './components/section/section-add/section-add.component';
-import { SectionEditComponent } from './components/section/section-edit/section-edit.component';
+import { MenuTreeNodeComponent } from './components/menu-tree-node/menu-tree-node.component'
+import { SectionFormComponent } from './components/section-form/section-form.component'
+import { MenuNodeAddComponent } from './components/menu-node-add/menu-node-add.component'
+import { MenuNodeEditComponent } from './components/menu-node-edit/menu-node-edit.component'
+import { ProductFormComponent } from './components/product-form/product-form.component'
 
 @NgModule({
   declarations: [
@@ -23,8 +24,9 @@ import { SectionEditComponent } from './components/section/section-edit/section-
     MenuTreeComponent,
     MenuTreeNodeComponent,
     SectionFormComponent,
-    SectionAddComponent,
-    SectionEditComponent,
+    MenuNodeAddComponent,
+    MenuNodeEditComponent,
+    ProductFormComponent,
   ],
   imports: [
     CommonModule,

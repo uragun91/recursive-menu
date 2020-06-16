@@ -1,0 +1,22 @@
+<div class="product">
+  <div class="title-row">
+    <h2 class="title">Добавить позицию</h2>
+    <a (click)="onCancelClick()">Отмена</a>
+  </div>
+
+  <form [formGroup]="productForm">
+    <div class="form-group">
+      <label class="form-label">Название</label>
+      <input type="text" class="form-control" formControlName="name" placeholder="Введите название позиции" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Цена</label>
+      <input type="number" class="form-control" formControlName="sale" placeholder="0 рублей" />
+    </div>
+  </form>
+
+  <button mat-flat-button class="save-button" color="primary" [disabled]="productForm.invalid" (click)="onSaveClick()">
+    Сохранить
+  </button>
+</div>

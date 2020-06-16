@@ -1,0 +1,13 @@
+<app-section-form
+  *ngIf="menuNode.type === MenuNodeTypes.SECTION"
+  [sectionNode]="menuNode"
+  (submit)="addMenuNode()"
+  (cancel)="cancel()"
+></app-section-form>
+
+<app-product-form
+  *ngIf="menuNode.type === MenuNodeTypes.PRODUCT"
+  [productNode]="menuNode"
+  (submit)="addMenuNode()"
+  (cancel)="cancel()"
+></app-product-form>

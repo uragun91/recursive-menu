@@ -1,10 +1,18 @@
+// angular
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input, OnDestroy, Output, EventEmitter } from '@angular/core'
-import { MenuService, separator } from '../../../services/menu.service'
 import { FormBuilder, Validators, FormGroup } from '@angular/forms'
+
+// rxjs
+import { Subject } from 'rxjs'
+import { tap, takeUntil } from 'rxjs/operators'
+
+// others
+import * as Separator from '../../../core/constants/Separator'
+import { MenuService } from '../../services/menu.service'
 import { MenuNode } from 'src/app/core/models/menu-node.model'
 import { MenuNodeTypes } from 'src/app/core/enums/menu-node-types.enum'
-import { tap, takeUntil } from 'rxjs/operators'
-import { Subject } from 'rxjs'
+
+const separator = Separator.separator
 
 @Component({
   selector: 'app-section-form',
@@ -35,7 +43,7 @@ export class SectionFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sectionForm.get('name').setValue(this.sectionNode.name)
-    this.sectionForm.get('section').setValue(this.sectionNode.path.split(separator).slice(0, -1).join(separator))
+    this.sectionForm.get('section').setValue(this.sectionNode.getParentPath())
 
     this.sectionForm.get('section').valueChanges
       .pipe(
@@ -50,9 +58,6 @@ export class SectionFormComponent implements OnInit, OnDestroy {
         takeUntil(this.unsubscribe),
         tap((name: string) => {
           this.sectionNode.name = name
-          const pathArray = this.sectionNode.path.split(separator).slice(0, -1)
-          pathArray.push(name)
-          this.sectionNode.path = pathArray.join(separator)
         })
       ).subscribe()
 

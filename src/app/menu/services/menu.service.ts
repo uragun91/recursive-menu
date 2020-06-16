@@ -4,9 +4,10 @@ import { Observable, of } from 'rxjs'
 import { MenuNode } from 'src/app/core/models/menu-node.model'
 import { map, tap } from 'rxjs/operators'
 import { MenuNodeTypes } from 'src/app/core/enums/menu-node-types.enum'
+import * as Separator from '../../core/constants/Separator'
 
 const MENU_KEY = 'nomia__menu-data'
-export const separator = ' \u2192 '
+const separator = Separator.separator
 
 interface IMenu {
   name: string,
@@ -83,30 +84,30 @@ export class MenuService {
       )
   }
 
-  public addSection(sectionNode: MenuNode) {
-    const parentNode = this.getParentNodeRef(sectionNode)
+  public addMenuNode(menuNode: MenuNode) {
+    const parentNode = this.getParentNodeRef(menuNode)
     if (parentNode) {
-      parentNode.children.push(sectionNode)
+      parentNode.children.push(menuNode)
     } else {
       console.warn('Раздел будет добавлен в корневую секцию!')
-      this.menu.push(sectionNode)
+      this.menu.push(menuNode)
     }
   }
 
-  public saveSection(sectionNode: MenuNode, prevPath: string): void {
-    const currentParentPath: string = this.getParentPath(sectionNode.path)
+  public saveMenuNode(menuNode: MenuNode, prevPath: string): void {
+    const currentParentPath: string = this.getParentPath(menuNode.path)
     const prevParentPath: string = this.getParentPath(prevPath)
 
-    const newSectionNode = MenuNode.build(sectionNode)
+    const newSectionNode = MenuNode.build(menuNode)
     const parentPath = currentParentPath !== prevParentPath ? prevParentPath : currentParentPath
-    const removedNodeIndex = this.removeNode(sectionNode, parentPath)
+    const removedNodeIndex = this.removeMenuNode(menuNode, parentPath)
 
-    const parentNode: MenuNode = this.getParentNodeRef(sectionNode)
+    const parentNode: MenuNode = this.getParentNodeRef(menuNode)
     const childrenHost: MenuNode[] = parentNode && parentNode.children || this.menu
     childrenHost.splice(removedNodeIndex, 0, newSectionNode)
   }
 
-  public removeNode(node: MenuNode, parentPath?: string): number {
+  public removeMenuNode(node: MenuNode, parentPath?: string): number {
     const parentNode: MenuNode = parentPath ? this.getMenuNodeRefByPath(parentPath, this.menu) : this.getParentNodeRef(node)
     const childrenHost: MenuNode[] = parentNode && parentNode.children || this.menu
 
