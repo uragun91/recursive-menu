@@ -1,4 +1,4 @@
-## Nomia Test Task
+## Recursive menu
 
 #### Clone repo
 #### Run `npm ci`
