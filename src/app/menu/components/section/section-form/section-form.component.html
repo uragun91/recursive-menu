@@ -13,12 +13,13 @@
     <div class="form-group">
       <label class="form-label">Раздел</label>
       <select class="form-control" formControlName="section">
+        <option value="">Основной</option>
         <option *ngFor="let section of allSections" [value]="section">{{ section }}</option>
       </select>
     </div>
   </form>
 
-  <button mat-flat-button class="save-button" color="primary" [disabled]="sectionForm.invalid">
+  <button mat-flat-button class="save-button" color="primary" [disabled]="sectionForm.invalid" (click)="onSaveClick()">
     Сохранить
   </button>
 </div>

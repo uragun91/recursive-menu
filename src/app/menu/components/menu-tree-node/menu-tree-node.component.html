@@ -5,11 +5,11 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="onEditNodeClick()">
         <mat-icon>edit</mat-icon>
         <span>Редактировать</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="onRemoveNodeClick()">
         <mat-icon>delete</mat-icon>
         <span>Удалить</span>
       </button>
@@ -31,19 +31,19 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="onAddNewNodeClick(NodeTypes.PRODUCT)">
       <mat-icon>add</mat-icon>
       <span>Добавить позицию</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="onAddNewNodeClick(NodeTypes.SECTION)">
       <mat-icon>add</mat-icon>
       <span>Добавить раздел меню</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="onEditNodeClick()">
       <mat-icon>edit</mat-icon>
       <span>Редактировать</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="onRemoveNodeClick()">
       <mat-icon>delete</mat-icon>
       <span>Удалить</span>
     </button>

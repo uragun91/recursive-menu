@@ -13,14 +13,20 @@ import { MenuService } from './services/menu.service'
 import { MenuHomeComponent } from './components/menu-home/menu-home.component'
 import { MenuTreeComponent } from './components/menu-tree/menu-tree.component'
 import { MenuTreeNodeComponent } from './components/menu-tree-node/menu-tree-node.component';
-import { SectionComponent } from './components/section/section.component'
+import { SectionFormComponent } from './components/section/section-form/section-form.component';
+import { SectionAddComponent } from './components/section/section-add/section-add.component';
+import { SectionEditComponent } from './components/section/section-edit/section-edit.component';
+import { SectionHomeComponent } from './components/section/section-home/section-home.component'
 
 @NgModule({
   declarations: [
     MenuHomeComponent,
     MenuTreeComponent,
     MenuTreeNodeComponent,
-    SectionComponent
+    SectionFormComponent,
+    SectionAddComponent,
+    SectionEditComponent,
+    SectionHomeComponent
   ],
   imports: [
     CommonModule,

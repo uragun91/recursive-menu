@@ -1,10 +1,10 @@
 <div class="menu-home">
   <div class="controls-wrapper">
-    <button type="button" mat-stroked-button class="add-section">
+    <button type="button" mat-stroked-button class="add-section" (click)="gotoAddSectionPage()">
       <mat-icon>add_circle_outline</mat-icon>
       <span>Раздел</span>
     </button>
-    <button type="button" mat-stroked-button class="add-item">
+    <button type="button" mat-stroked-button class="add-item" (click)="gotoAddProductPage()">
       <mat-icon>add_circle_outline</mat-icon>
       <span>Позиция</span>
     </button>
@@ -20,6 +20,13 @@
       </div>
     </div>
 
-    <app-menu-tree *ngIf="menu" [menu]="menu"></app-menu-tree>
+    <app-menu-tree
+      *ngIf="menu"
+      [menu]="menu"
+      (addProductNodeClick)="gotoAddProductPage($event)"
+      (addSectionNodeClick)="gotoAddSectionPage($event)"
+      (editNodeClick)="gotoEditNodePage($event)"
+      (removeNodeClick)="removeNodeFromTree($event)"
+    ></app-menu-tree>
   </div>
 </div>

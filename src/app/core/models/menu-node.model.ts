@@ -6,6 +6,7 @@ export class MenuNode {
     public sale: number = 0,
     public type: MenuNodeTypes = MenuNodeTypes.SECTION,
     public children: MenuNode[] = [],
+    public path: string = ''
     ) { }
 
   public static build(data: any = {}): MenuNode {
@@ -19,6 +20,7 @@ export class MenuNode {
       data.sale || 0,
       nodeType,
       Array.isArray(data.children) ? data.children.map(MenuNode.build) : [],
+      data.path
     )
   }
 }
