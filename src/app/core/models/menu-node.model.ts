@@ -11,8 +11,8 @@ export class MenuNode {
 
   public static build(data: any = {}): MenuNode {
     let nodeType = MenuNodeTypes.SECTION
-    if (Object.values(MenuNodeTypes).includes(data.nodeType)) {
-      nodeType = data.nodeType
+    if (Object.values(MenuNodeTypes).includes(data.type)) {
+      nodeType = data.type
     }
 
     return new MenuNode(

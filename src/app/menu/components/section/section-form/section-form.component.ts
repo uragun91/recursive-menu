@@ -59,7 +59,7 @@ export class SectionFormComponent implements OnInit, OnDestroy {
 
     this.menuSerive.getSectionsPaths()
       .subscribe((sections: string[]) => {
-        this.allSections = sections
+        this.allSections = sections.filter((section: string) => !section.startsWith(this.sectionNode.path))
         this.cd.detectChanges()
       })
   }
