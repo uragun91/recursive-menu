@@ -16,7 +16,6 @@ import { MenuTreeNodeComponent } from './components/menu-tree-node/menu-tree-nod
 import { SectionFormComponent } from './components/section/section-form/section-form.component';
 import { SectionAddComponent } from './components/section/section-add/section-add.component';
 import { SectionEditComponent } from './components/section/section-edit/section-edit.component';
-import { SectionHomeComponent } from './components/section/section-home/section-home.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import { SectionHomeComponent } from './components/section/section-home/section-
     SectionFormComponent,
     SectionAddComponent,
     SectionEditComponent,
-    SectionHomeComponent
   ],
   imports: [
     CommonModule,
