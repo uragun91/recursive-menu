@@ -15,9 +15,14 @@
       </button>
     </mat-menu>
   </div>
-  <span class="menu-tree-node__title">
-    {{ node.name }}
-  </span>
+  <div class="menu-tree-node__node-information">
+    <span class="menu-tree-node__title">
+      {{ node.name }}
+    </span>
+    <span class="menu-tree-node__sale">
+      {{ node.sale }} &#8381;
+    </span>
+  </div>
 </div>
 
 <div class="menu-tree-node menu-tree-node--section" *ngIf="node.type === NodeTypes.SECTION">
